@@ -1,0 +1,319 @@
+.nav
+{
+    font-family: 'Barlow Condensed', sans-serif;
+}
+.int
+{
+    font-size: 20px;
+    margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.color
+{
+    color: black;
+}
+.barra
+{
+    background-color: beige;
+}
+.listas
+{
+   text-decoration: none;
+}
+.tit 
+{
+    font-family: 'Pathway Gothic One', sans-serif;
+    
+}
+.medio
+{
+    text-align: center;
+  
+}
+
+.bordes
+{
+    border-color: transparent;
+}
+.dist
+{
+    margin-left: 25px;
+}
+body
+{
+    background-color: #DDE1E6;
+}
+.fot
+{
+    padding-left: 45%;
+    height: 4px;
+
+    
+}
+.ar
+{
+    color: #E5E5E5;
+}
+.ic{
+    margin-right: 10px;
+}
+  
+  .filtro-boton {
+    border-radius: 50px;
+  }
+  .filtro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .filtro-ovalo {
+    background-color: #f1f1f1;
+    border-radius: 50px;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .filtro-input-inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+  }
+  
+  .filtro-sidebar {
+    float: left;
+
+    
+  }
+  
+  
+  .btn-buscar {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-buscar:hover {
+    background-color: #0056b3;
+  }
+
+  .filtro-container {
+    float: left;
+    width: 30%;
+  }
+
+  .filtro-imagenes {
+    float: right;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alineación hacia la parte superior */
+  }
+
+  .filtro-imagen {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+
+
+  .container {
+    display: grid;
+    grid-template-columns: 57.7% 43.3%;
+    gap: 20px; /* Espacio entre columnas */
+    padding-top: 90px;
+    padding-bottom: 30px;
+   
+  }
+  
+  .column-1 {
+    /* Estilos para la primera columna */
+    margin-left: 30px;
+  }
+.ingreso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.enc {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f5f5f5;
+            justify-content: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            width: 400px;
+          
+}
+#input{
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#ingr{
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.login-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-icons img {
+  margin-right: 10px;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+ /* Estilos para las secciones del footer */
+ .footer-section {
+  margin-bottom: 20px;
+}
+
+/* Estilos para los enlaces del footer */
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el formulario de suscripción */
+.footer-section form {
+  margin-top: 10px;
+}
+
+.footer-section input[type="email"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.footer-section button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.footer-section button[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* Estilos para el footer inferior */
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #666;
+}
+
+.footer-bottom a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+.inicio{
+  color: black;
+  text-decoration: none;
+
+}
+.rectangular-caja
+{
+  background-color: #FFF;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.central {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.cuestionario{
+  background-color: #EBEEF2;
+}
+.style{
+  width: 425px; 
+  height: 203px; 
+  background-color: #F4F2FC; 
+  border: 1px solid #ccc; 
+  padding: 20px;
+}
+.cnto {
+  
+  background-color: #fff;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+}
+
+.rectangle {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+.regs {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
