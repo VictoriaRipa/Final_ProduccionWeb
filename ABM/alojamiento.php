@@ -1,137 +1,161 @@
 <?php
 if (mysqli_connect('localhost', 'root', '', 'alojamientos')) {
-    // Servidor, usuario servidor, contraseña, nombre de la base de datos
-    if (isset($_GET['alojamientos']) && isset($_GET['nombre'])) {
-        $codigo = $_GET['alojamientos'];
-        $nombreAlojamiento = $_GET['nombreAlojamiento'];
+    // servidor, usuario servidor, contraseña, nombre de la base de datos		
+    if (isset($_GET['alojamiento']) && isset($_GET['nombre'])) {
+        $codigo = $_GET['alojamiento'];
+        $nombreAlojamiento = $_GET['nombre'];
     }
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
 
-    echo "<html>";
-    echo "<head>";
-    echo "<title>Listado de $nombreAlojamiento - ABM</title>";
-    echo "<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
             body {
                 font-family: Arial, sans-serif;
-            }
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
-            th, td {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-            }
-            th {
                 background-color: #f2f2f2;
+                margin: 0;
+                padding: 0;
             }
-            h1 {
-                color: #333;
+
+            header {
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 10px;
             }
+
+            .container {
+                margin: 20px;
+                padding: 20px;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            table, th, td {
+                border: 1px solid #ccc;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #333;
+                color: white;
+            }
+
             form {
-                max-width: 600px;
-                margin: 20px auto;
+                margin-top: 20px;
+                width: 70%;
+                margin-left: auto;
+                margin-right: auto;
             }
+
             label, input, textarea {
                 display: block;
                 margin-bottom: 10px;
             }
-        </style>";
-    echo "</head>";
-    echo "<body>";
 
-    echo "<h1>Listado de $nombreAlojamiento - ABM</h1>";
+            textarea {
+                width: 100%;
+                height: 100px;
+            }
 
-    $con = mysqli_connect('localhost', 'root', '', 'alojamientos');
+            input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
 
-    $consulta = "SELECT * FROM alojamientos WHERE nombreAlojamiento='$codigo'";
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
 
-    if ($resultado = mysqli_query($con, $consulta)) {
-        echo "<table border=1>";
-        echo "<caption>$nombreAlojamiento</caption>";
-        echo "<tr>
-                <th>Alojamiento</th>
-                <th>Modificar Alojamiento</th>
-                <th>Borrar</th>
-              </tr>";
+   <body>
+        <header>
+            <h1>Listado de <?php echo $nombreAlojamiento; ?> - ABM</h1>
+        </header>
+        <div class="container">
+            <?php
+            $con = mysqli_connect('localhost', 'root', '', 'alojamientos');
+            $consulta = "SELECT * FROM alojamientos WHERE nombreAlojamiento='$codigo'";
+            if ($resultado = mysqli_query($con, $consulta)) {
+                echo "<table>";
+                echo "
+                    <caption>$nombreAlojamiento</caption>
+                    <tr>
+                        <th>Alojamiento</th>
 
-        while ($fila = mysqli_fetch_array($resultado)) {
-            echo "<tr>
-                    <td>$fila[nombreProducto]</td>
-                    <td><a href='modificar.php?alojamiento=".$fila["nombreAlojamiento"]."'>MODIFICAR</a></td>
-                    <td><a href='borrar.php?alojamiento=".$fila["nombreAlojamiento"]."'>Borrar</a></td>
-                  </tr>";
-        }
-        echo "</table>";
-    }
+                    </tr>";
 
-    echo "</body>";
-    echo "</html>";
+                while ($fila = mysqli_fetch_array($resultado)) {
+                    echo "<tr>";
+                    echo "<td>$fila[nombreAlojamiento]</td>";
+                    echo "<td><a href='modificarAlojamiento.php?alojamiento=" . $fila["nombreAlojamiento"] . "'>MODIFICAR</a></td>";
+                    echo "<td><a href='borrar.php?alojamiento=" . $fila["nombreAlojamiento"] . "'>Borrar</a></td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }
+            ?>
+        </div>
+
+        <form action="altaalojamiento.php" method="post" enctype="multipart/form-data" class="container">
+            <div>
+                <label for="nombreAlojamiento">Nombre del Alojamiento</label>
+                <input id="nombreAlojamiento" type="text" name="nombreAlojamiento" required>
+            </div>
+            <div>
+                <label for="codigoAlojamiento">Codigo alojamiento</label>
+                <input id="codigoAlojamiento" type="text" name="codigoAlojamiento" required>
+            </div>
+            <div>
+                <label for="precio">Precio alojamiento</label>
+                <input id="precio" type="number" name="precio" required>
+            </div>
+            <div>
+                <label for="cantidad">Cantidad alojamiento</label>
+                <input id="cantidad" type="number" name="cantidad" required>
+            </div>
+            <div>
+                <p><label for="archivo">Agregar Foto:</label></p>
+                <input accept="*" type="file" name="foto" id="archivo" required />
+            </div>
+            <div>
+                <p>Descripcion</p>
+                <textarea name="descripcion" required></textarea>
+            </div>
+            <div>
+                <p>Detalle</p>
+                <textarea name="detalle" required></textarea>
+            </div>
+            <input type="submit" value="Agregar alojamiento">
+        </form>
+
+    </body>
+
+    </html>
+
+<?php
 } else {
-    echo "<h1>No hay conexión</h1>";
+    echo "<h1>No hay conexion</h1>";
 }
 ?>
-
-<html>
-
-<head>
-    <title>Agregar Producto</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        form {
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        label,
-        input,
-        textarea {
-            display: block;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <h2></h2>
-
-    <form action="altaAlojamiento.php" method="post" enctype="multipart/form-data">
-        <div>
-            <input id="catategoria" type="hidden" name="catategoria" <?php echo "value='$codigo'"; ?> />
-        </div>
-        <div>
-            <label for="codigoProd">Coxdigo Producto</label>
-            <input id="codigoProd" type="text" name="codigoProd">
-        </div>
-        <div>
-            <label for="nombreProd">Nombre Producto</label>
-            <input id="nombreProd" type="text" name="nombreProd">
-        </div>
-        <div>
-            <label for="precio">Precio Producto</label>
-            <input id="precio" type="number" name="precio">
-        </div>
-        <div>
-            <label for="cantidad">Cantidad Producto</label>
-            <input id="cantidad" type="number" name="cantidad">
-        </div>
-        <div>
-            <p><label for="archivo">Agregar Foto:</label></p>
-            <input accept="*" type="file" name="foto" id="archivo" required />
-        </div>
-        <div>
-            <p>Descripcion</p>
-            <textarea name="descripcion"></textarea>
-        </div>
-        <div>
-            <p>Detalle</p>
-            <textarea name="detalle"></textarea>
-        </div>
-        <input type="submit" value="Agregar alojamiento">
-    </form>
-</body>
-
-</html>

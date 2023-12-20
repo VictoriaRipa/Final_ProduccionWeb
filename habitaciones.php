@@ -1,22 +1,47 @@
 <?php
 include_once "header.php";
 ?>
-<main>
-  <h1 class="mprod tit medio"><strong>HOSPEDAJE</strong></h1>
-</main>
-<section class="filtro-lugar">
-  <form>
-    <div class="filtro-input-inline tit">
-      <label for="lugar">Lugar:</label>
-      <input type="text" id="lugar" name="lugar">
-      <label for="fecha-desde">Desde:</label>
-      <input type="date" id="fecha-desde" name="fecha-desde">
-      <label for="fecha-hasta">Hasta:</label>
-      <input type="date" id="fecha-hasta" name="fecha-hasta">
-      <button type="submit" class="btn-buscar">Buscar</button>
-    </div>
-  </form>
-</section>
+<div class="container mt-5">
+    <section class="filtro-lugar text-center">
+        <form class="p-3 rounded" style="background-color: #f8f9fa; max-width: 800px; margin-left: auto; margin-right: 0;">
+            <h2 class="mb-3">Encuentra tu lugar perfecto</h2>
+
+            <div class="mb-3">
+                <label for="lugar" class="sr-only">Lugar:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Buscar por lugar">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="fecha-desde" class="sr-only">Desde:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                    </div>
+                    <input type="date" class="form-control" id="fecha-desde" name="fecha-desde">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="fecha-hasta" class="sr-only">Hasta:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                    </div>
+                    <input type="date" class="form-control" id="fecha-hasta" name="fecha-hasta">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+        </form>
+    </section>
+</div>
+
+
 
 
 <div class="container g-0">

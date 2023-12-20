@@ -1,26 +1,7 @@
 <?php
 include_once "header.php";
 ?>
-<div class="text-end">
-  <div class="rectangular-caja">
-    <a href="login/index.php" class="inicio">INICIAR SESION</a>
-  </div>
-</div>
-<section class=" filtro-lugar">
-  <form>
-    <div class="filtro-input-inline tit ">
-      <label for="lugar">Lugar:</label>
-      <input type="text" id="lugar" name="lugar">
-      <label for="fecha-desde">Desde:</label>
-      <input type="date" id="fecha-desde" name="fecha-desde">
-      <label for="fecha-hasta">Hasta:</label>
-      <input type="date" id="fecha-hasta" name="fecha-hasta">
-      <button type="submit" class="btn-buscar">Buscar</button>
-    </div>
-  </form>
-</section>
 
-</div>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -91,6 +72,10 @@ include_once "header.php";
     </div>
   </div>
 </div>
+<div class="text-end">
+  <div class="rectangular-caja">
+    <a href="login/index.php" class="inicio">Administrador</a>
+  </div>
 <?php
 include_once "footer.php";
 ?>
