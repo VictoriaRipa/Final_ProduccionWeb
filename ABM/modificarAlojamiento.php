@@ -36,16 +36,17 @@ if (isset($_GET["nombreAlojamiento"])) {
             echo "<body>";
 
             echo "<h1>Modificar Alojamiento</h1>";
-            echo "<form action='procesarModificacion.php' method='post'>";
+            echo "<form action='procesarModificacion.php' method='post' enctype='multipart/form-data'>";
             echo "<input type='hidden' name='idAlojamiento' value='{$datosAlojamiento['idAlojamiento']}'>";
             echo "Nombre: <input type='text' name='nombreAlojamiento' value='{$datosAlojamiento['nombreAlojamiento']}'><br>";
             echo "Precio: <input type='text' name='precioAlojamiento' value='{$datosAlojamiento['precioAlojamiento']}'><br>";
             echo "Disponibilidad: <input type='text' name='disponibilidad' value='{$datosAlojamiento['disponibilidad']}'><br>";
             echo "Descripción: <textarea name='descripcionAlojamiento'>{$datosAlojamiento['descripcionAlojamiento']}</textarea><br>";
             echo "Detalles: <textarea name='detallesAlojamiento'>{$datosAlojamiento['detallesAlojamiento']}</textarea><br>";
-            // Agrega más campos según tus necesidades
+            echo "Nueva Foto: <input type='file' name='nuevaFoto'><br>"; 
             echo "<input type='submit' value='Modificar'>";
             echo "</form>";
+
 
             echo "</body>";
             echo "</html>";

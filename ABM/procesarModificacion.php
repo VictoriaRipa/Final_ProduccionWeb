@@ -13,27 +13,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcionAlojamiento = $_POST['descripcionAlojamiento'];
     $detallesAlojamiento = $_POST['detallesAlojamiento'];
 
+    // Manejo de la imagen
+    if ($_FILES['nuevaFoto']['size'] > 0) {
+        $nombreFoto = $_FILES['nuevaFoto']['name'];
+        $rutaFoto = $nombreFoto; // Si quiero que almacene desde la ruta le pongo  $rutaFoto = 'fotos/' . $nombreFoto;
+        move_uploaded_file($_FILES['nuevaFoto']['tmp_name'], $rutaFoto);
+    } else {
+        // Si no se carga una nueva foto, conserva la foto actual en la base de datos
+        $consultaFoto = "SELECT fotoAlojamiento FROM alojamientos WHERE idAlojamiento=?";
+        $stmtFoto = mysqli_prepare($con, $consultaFoto);
+        mysqli_stmt_bind_param($stmtFoto, "i", $idAlojamiento);
+        mysqli_stmt_execute($stmtFoto);
+        mysqli_stmt_bind_result($stmtFoto, $fotoAntigua);
+        mysqli_stmt_fetch($stmtFoto);
+        $rutaFoto = $fotoAntigua;
+        mysqli_stmt_close($stmtFoto);
+    }
+
     $consulta = "UPDATE alojamientos SET
-                 nombreAlojamiento=?, precioAlojamiento=?, disponibilidad=?, descripcionAlojamiento=?, detallesAlojamiento=?
+                 nombreAlojamiento=?, precioAlojamiento=?, disponibilidad=?, fotoAlojamiento=?, descripcionAlojamiento=?, detallesAlojamiento=?
                  WHERE idAlojamiento=?";
     $stmt = mysqli_prepare($con, $consulta);
 
-    echo "<!DOCTYPE html>";
-    echo "<html lang='es'>";
-    echo "<head>";
-    echo "<meta charset='UTF-8'>";
-    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-    echo "<title>Modificar Alojamiento</title>";
-    echo "<style>";
-    echo "body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 0; text-align: center; }";
-    echo "h1 { color: #4CAF50; }";
-    echo "p { color: #007bff; }";
-    echo "</style>";
-    echo "</head>";
-    echo "<body>";
-
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "sssssi", $nombreAlojamiento, $precioAlojamiento, $disponibilidad, $descripcionAlojamiento, $detallesAlojamiento, $idAlojamiento);
+        mysqli_stmt_bind_param($stmt, "ssisssi", $nombreAlojamiento, $precioAlojamiento, $disponibilidad, $rutaFoto, $descripcionAlojamiento, $detallesAlojamiento, $idAlojamiento);
         $resultado = mysqli_stmt_execute($stmt);
 
         if ($resultado) {
